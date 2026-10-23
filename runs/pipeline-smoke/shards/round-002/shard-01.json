@@ -1,0 +1,58 @@
+{
+  "abs_d_sum": 196.46280055044917,
+  "config": {
+    "adjudication": {
+      "draw_after": 80,
+      "draw_ku": 0.15000000596046448,
+      "draw_plies": 20,
+      "enabled": true,
+      "resign_ku": 8.0,
+      "resign_plies": 6
+    },
+    "created": "2026-10-23T19:44:21Z",
+    "depth": 2,
+    "explore_margin": 0.15,
+    "explore_plies": 8,
+    "games_requested": 20,
+    "gen_file": "runs/pipeline-smoke/candidate.json",
+    "generation": 1,
+    "hash_mb": 8,
+    "lambda": 0.699999988079071,
+    "max_plies": 300,
+    "openings": "engine/data/openings/balanced-200.epd",
+    "round_seed": 700002,
+    "scale": 4.0,
+    "shard_index": 1,
+    "threads": 4
+  },
+  "d_sum": 116.0417545948294,
+  "elapsed_ms": 2114,
+  "games": 20,
+  "gen_hash": "d7886a53fc69054e",
+  "grad_sum": [
+    -4.630636486543153,
+    -1.4653839948005043,
+    1.4309880490982323,
+    -0.23525000071094837,
+    0.5442579541995656,
+    1.057735234964639,
+    1.0276849665679038,
+    130.39515821635723,
+    -40.3646989017725,
+    0.561099438695237,
+    -0.2538769966486143,
+    -1.3051740021255682
+  ],
+  "kind": "tdleaf-shard",
+  "plies": 2050,
+  "results": {
+    "adjudicated": 17,
+    "capped": 0,
+    "d": 2,
+    "l": 7,
+    "w": 11
+  },
+  "seed": 432765576055086840,
+  "spec": "v1.0-spec-1",
+  "version": 1
+}
