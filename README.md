@@ -7,6 +7,9 @@ that split training and testing into independent work units.
 - `tdleaf-round`: one self-play training round (TDLeaf) split across up to 20 jobs, reduced into one update, committed
   under `runs/<name>/`; it starts the next round itself until the requested number of rounds is done.
   Create `runs/<name>/STOP` to stop after the current round.
+- `evolve-round`: one iteration of cosmological natural selection (SPSA with cooling): twin universes with perturbed
+  constants play each other across up to 20 jobs, and the winner pulls the constants its way. It chains itself like
+  `tdleaf-round` and stops on `runs/<name>/STOP`.
 - `sprt`: a batch sequential-probability test between two generations, committed under `results/`.
 
 Everything here is depth-limited and seeded, so every result can be reproduced from the files in this repository.
