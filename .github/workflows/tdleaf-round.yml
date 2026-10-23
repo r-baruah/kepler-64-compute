@@ -1,0 +1,128 @@
+# One TDLeaf training round as work units (docs/v1/08_DISTRIBUTED_COMPUTE.md
+# in r-baruah/kepler-64): plan -> build -> N shards -> reduce + commit -> next.
+# Started by hand; it re-dispatches itself until `rounds` is reached or
+# runs/<run>/STOP exists.
+name: tdleaf-round
+
+on:
+  workflow_dispatch:
+    inputs:
+      run: { description: "run name (folder under runs/)", required: true }
+      rounds: { description: "total rounds for this run", default: "20" }
+      shards: { description: "parallel shards (max 20)", default: "20" }
+      games: { description: "games per round (split across shards)", default: "2000" }
+      depth: { description: "search depth", default: "4" }
+      lr: { description: "Adam learning rate (relative to bound range)", default: "0.01" }
+      seed: { description: "base seed", default: "1" }
+      gen: { description: "starting generation file", default: "engine/data/generations/gen-000.json" }
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: tdleaf-${{ inputs.run }}
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.p.outputs.go }}
+      round: ${{ steps.p.outputs.round }}
+      gen: ${{ steps.p.outputs.gen }}
+      state: ${{ steps.p.outputs.state }}
+      matrix: ${{ steps.p.outputs.matrix }}
+      per_shard: ${{ steps.p.outputs.per_shard }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: p
+        run: |
+          dir="runs/${{ inputs.run }}"
+          done=$(ls "$dir"/checkpoint-*.json 2>/dev/null | wc -l)
+          round=$((done + 1))
+          if [ -f "$dir/STOP" ] || [ "$round" -gt "${{ inputs.rounds }}" ]; then echo "go=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          if [ "$done" -gt 0 ]; then
+            gen="$dir/candidate.json"; state=$(ls "$dir"/checkpoint-*.json | sort | tail -1)
+          else
+            gen="${{ inputs.gen }}"; state=none
+          fi
+          n=${{ inputs.shards }}
+          echo "go=true" >> "$GITHUB_OUTPUT"
+          echo "round=$round" >> "$GITHUB_OUTPUT"
+          echo "gen=$gen" >> "$GITHUB_OUTPUT"
+          echo "state=$state" >> "$GITHUB_OUTPUT"
+          echo "per_shard=$(( ${{ inputs.games }} / n ))" >> "$GITHUB_OUTPUT"
+          echo "matrix=$(python3 -c "import json;print(json.dumps(list(range($n))))")" >> "$GITHUB_OUTPUT"
+          echo "round $round of ${{ inputs.rounds }}, gen $gen, state $state"
+
+  build:
+    needs: plan
+    if: needs.plan.outputs.go == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with: { workspaces: engine }
+      - run: cargo build --release -p kepler-train
+        working-directory: engine
+      - uses: actions/upload-artifact@v4
+        with: { name: kepler-train, path: engine/target/release/kepler-train, retention-days: 2 }
+
+  shard:
+    needs: [plan, build]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        k: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { name: kepler-train, path: bin }
+      - run: |
+          chmod +x bin/kepler-train
+          bin/kepler-train tdleaf-shard \
+            --gen "${{ needs.plan.outputs.gen }}" \
+            --openings engine/data/openings/balanced-200.epd \
+            --games ${{ needs.plan.outputs.per_shard }} \
+            --seed $(( ${{ inputs.seed }} * 100000 + ${{ needs.plan.outputs.round }} )) \
+            --shard-index ${{ matrix.k }} \
+            --depth ${{ inputs.depth }} --threads $(nproc) \
+            --out shard-$(printf %02d ${{ matrix.k }}).json
+      - uses: actions/upload-artifact@v4
+        with: { name: "shard-${{ matrix.k }}", path: "shard-*.json", retention-days: 2 }
+
+  reduce:
+    needs: [plan, build, shard]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { name: kepler-train, path: bin }
+      - uses: actions/download-artifact@v4
+        with: { pattern: "shard-*", path: shards, merge-multiple: true }
+      - run: |
+          chmod +x bin/kepler-train
+          dir="runs/${{ inputs.run }}"
+          mkdir -p "$dir/shards/round-$(printf %03d ${{ needs.plan.outputs.round }})"
+          cp shards/*.json "$dir/shards/round-$(printf %03d ${{ needs.plan.outputs.round }})/"
+          bin/kepler-train tdleaf-reduce --state "${{ needs.plan.outputs.state }}" \
+            --gen "${{ needs.plan.outputs.gen }}" --shard-dir shards --lr ${{ inputs.lr }} --out-dir "$dir"
+          echo "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" > "$dir/round-$(printf %03d ${{ needs.plan.outputs.round }}).run-url"
+      - name: commit
+        run: |
+          git config user.name "kepler-compute"
+          git config user.email "kepler-compute@users.noreply.github.com"
+          git add runs
+          git commit -m "run ${{ inputs.run }}: round ${{ needs.plan.outputs.round }}"
+          git push
+      - name: next round
+        if: ${{ fromJSON(needs.plan.outputs.round) < fromJSON(inputs.rounds) }}
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          gh workflow run tdleaf-round.yml --ref "${{ github.ref_name }}" \
+            -f run="${{ inputs.run }}" -f rounds="${{ inputs.rounds }}" -f shards="${{ inputs.shards }}" \
+            -f games="${{ inputs.games }}" -f depth="${{ inputs.depth }}" -f lr="${{ inputs.lr }}" \
+            -f seed="${{ inputs.seed }}" -f gen="${{ inputs.gen }}"

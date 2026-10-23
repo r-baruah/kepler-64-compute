@@ -1,0 +1,72 @@
+# Batch SPRT as work units: N shards of opening pairs, one reduce.
+name: sprt
+
+on:
+  workflow_dispatch:
+    inputs:
+      name: { description: "result name (results/<name>.json)", required: true }
+      a: { description: "generation file A (the candidate)", required: true }
+      b: { description: "generation file B (the baseline)", required: true }
+      shards: { default: "20" }
+      pairs: { description: "opening pairs per shard", default: "100" }
+      depth: { default: "4" }
+      seed: { default: "1" }
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with: { workspaces: engine }
+      - run: cargo build --release -p kepler-train
+        working-directory: engine
+      - uses: actions/upload-artifact@v4
+        with: { name: kepler-train, path: engine/target/release/kepler-train, retention-days: 2 }
+      - id: m
+        run: echo "matrix=$(python3 -c "import json;print(json.dumps(list(range(${{ inputs.shards }}))))")" >> "$GITHUB_OUTPUT"
+    outputs:
+      matrix: ${{ steps.m.outputs.matrix }}
+
+  shard:
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        k: ${{ fromJSON(needs.build.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { name: kepler-train, path: bin }
+      - run: |
+          chmod +x bin/kepler-train
+          bin/kepler-train sprt-shard --a "${{ inputs.a }}" --b "${{ inputs.b }}" \
+            --openings engine/data/openings/balanced-200.epd --pairs ${{ inputs.pairs }} \
+            --seed ${{ inputs.seed }} --shard-index ${{ matrix.k }} \
+            --depth ${{ inputs.depth }} --threads $(nproc) --out s-$(printf %02d ${{ matrix.k }}).json
+      - uses: actions/upload-artifact@v4
+        with: { name: "s-${{ matrix.k }}", path: "s-*.json", retention-days: 2 }
+
+  reduce:
+    needs: shard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { name: kepler-train, path: bin }
+      - uses: actions/download-artifact@v4
+        with: { pattern: "s-*", path: shards, merge-multiple: true }
+      - run: |
+          chmod +x bin/kepler-train
+          mkdir -p results/${{ inputs.name }}
+          cp shards/*.json results/${{ inputs.name }}/
+          bin/kepler-train sprt-reduce --shards shards/*.json --out results/${{ inputs.name }}.json
+          echo "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" > results/${{ inputs.name }}.run-url
+          git config user.name "kepler-compute"
+          git config user.email "kepler-compute@users.noreply.github.com"
+          git add results && git commit -m "sprt ${{ inputs.name }}" && git push
