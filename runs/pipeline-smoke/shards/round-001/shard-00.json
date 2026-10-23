@@ -1,0 +1,58 @@
+{
+  "abs_d_sum": 218.2351027681725,
+  "config": {
+    "adjudication": {
+      "draw_after": 80,
+      "draw_ku": 0.15000000596046448,
+      "draw_plies": 20,
+      "enabled": true,
+      "resign_ku": 8.0,
+      "resign_plies": 6
+    },
+    "created": "2026-10-23T19:43:06Z",
+    "depth": 2,
+    "explore_margin": 0.15,
+    "explore_plies": 8,
+    "games_requested": 20,
+    "gen_file": "engine/data/generations/gen-000.json",
+    "generation": 0,
+    "hash_mb": 8,
+    "lambda": 0.699999988079071,
+    "max_plies": 300,
+    "openings": "engine/data/openings/balanced-200.epd",
+    "round_seed": 700001,
+    "scale": 4.0,
+    "shard_index": 0,
+    "threads": 4
+  },
+  "d_sum": 153.81247395917308,
+  "elapsed_ms": 2224,
+  "games": 20,
+  "gen_hash": "54cf3626c756bbf7",
+  "grad_sum": [
+    -4.19415483251214,
+    0.9028329183347523,
+    -3.061668465612456,
+    0.790997575270012,
+    1.0028475653380156,
+    -8.188849469646811,
+    6.702642457559705,
+    -382.019136428833,
+    -39.21922858059406,
+    2.631917446386069,
+    -0.11980172421317548,
+    -1.9709256365313195
+  ],
+  "kind": "tdleaf-shard",
+  "plies": 1801,
+  "results": {
+    "adjudicated": 14,
+    "capped": 0,
+    "d": 1,
+    "l": 9,
+    "w": 10
+  },
+  "seed": 11390541557658157459,
+  "spec": "v1.0-spec-1",
+  "version": 1
+}
