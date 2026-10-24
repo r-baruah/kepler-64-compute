@@ -1,0 +1,122 @@
+# Stockfish ladder (docs/v1/04_TRAINING_AND_GATES.md §6 in r-baruah/kepler-64).
+# One generation against Stockfish 19 at fixed UCI_Elo rungs, full games with
+# clocks. Clock-based games are NOT deterministic (determinism rule D3): these
+# results are statistics with error bars and never feed training.
+name: ladder
+
+on:
+  workflow_dispatch:
+    inputs:
+      name: { description: "result name (results/ladder-<name>.json)", required: true }
+      gen: { description: "generation file", default: "engine/data/generations/gen-002.json" }
+      rungs: { description: "comma-separated Stockfish UCI_Elo values (min 1320)", default: "1320,1500,1700,1900" }
+      openings: { description: "openings per rung (each played with both colours)", default: "100" }
+      shards: { description: "shards per rung", default: "10" }
+      tc: { description: "time control base+inc seconds", default: "30+0.3" }
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.m.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: pinned toolchain (engine/rust-toolchain.toml)
+        working-directory: engine
+        run: rustup toolchain install && rustc --version
+      - uses: Swatinem/rust-cache@v2
+        with: { workspaces: engine }
+      - run: cargo build --release --locked -p kepler-uci -p kepler-train
+        working-directory: engine
+      - name: Stockfish 19 (official release, pinned)
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          gh release download sf_19 -R official-stockfish/Stockfish -p 'stockfish-linux-x86-64-universal.tar.gz'
+          tar -xzf stockfish-linux-x86-64-universal.tar.gz
+          mkdir -p bin && cp stockfish/stockfish-linux-x86-64-universal bin/stockfish
+          cp engine/target/release/kepler engine/target/release/kepler-train bin/
+          bin/stockfish <<< $'uci\nquit' | head -1
+      - uses: actions/upload-artifact@v4
+        with: { name: ladder-bin, path: bin/, retention-days: 2 }
+      - id: m
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          rungs = [int(r) for r in "${{ inputs.rungs }}".split(",")]
+          cells = [{"rung": r, "k": k} for r in rungs for k in range(int("${{ inputs.shards }}"))]
+          print("matrix=" + json.dumps(cells))
+          PY
+
+  shard:
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: ${{ fromJSON(needs.build.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { name: ladder-bin, path: bin }
+      - run: |
+          chmod +x bin/*
+          per=$(( ${{ inputs.openings }} / ${{ inputs.shards }} ))
+          start=$(( ${{ matrix.cell.k }} * per ))
+          grep -v '^#' engine/data/openings/balanced-200.epd | sed -n "$((start + 1)),$((start + per))p" > openings.epd
+          bin/kepler-train match \
+            --a "$PWD/bin/kepler" --a-name kepler --a-opt "Generation=$PWD/${{ inputs.gen }}" --a-opt Hash=32 \
+            --b "$PWD/bin/stockfish" --b-name "sf19-${{ matrix.cell.rung }}" \
+            --b-opt UCI_LimitStrength=true --b-opt UCI_Elo=${{ matrix.cell.rung }} --b-opt Threads=1 --b-opt Hash=32 \
+            --openings openings.epd --tc ${{ inputs.tc }} --concurrency 2 --max-plies 400 \
+            --out "m-${{ matrix.cell.rung }}-${{ matrix.cell.k }}.json" --pgn "m-${{ matrix.cell.rung }}-${{ matrix.cell.k }}.pgn"
+      - uses: actions/upload-artifact@v4
+        with: { name: "m-${{ matrix.cell.rung }}-${{ matrix.cell.k }}", path: "m-*", retention-days: 7 }
+
+  reduce:
+    needs: shard
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { pattern: "m-*", path: shards, merge-multiple: true }
+      - run: |
+          mkdir -p results/ladder-${{ inputs.name }}
+          cp shards/* results/ladder-${{ inputs.name }}/
+          python3 - <<'PY'
+          import json, glob, math, collections
+          name = "${{ inputs.name }}"
+          per = collections.defaultdict(lambda: {"w": 0, "d": 0, "l": 0, "shards": 0, "reasons": collections.Counter()})
+          for f in sorted(glob.glob("shards/m-*.json")):
+              rung = int(f.split("-")[1])
+              d = json.load(open(f))
+              s = d["score"]
+              r = per[rung]
+              r["w"] += s["a_w"]; r["d"] += s["a_d"]; r["l"] += s["a_l"]; r["shards"] += 1
+              for g in d["games"]:
+                  r["reasons"][g["reason"]] += 1
+          out = {"name": name, "gen": "${{ inputs.gen }}", "tc": "${{ inputs.tc }}", "stockfish": "sf_19 UCI_LimitStrength",
+                 "deterministic": False, "run": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}", "rungs": []}
+          for rung in sorted(per):
+              r = per[rung]; n = r["w"] + r["d"] + r["l"]
+              sc = (r["w"] + 0.5 * r["d"]) / n if n else 0.0
+              var = (r["w"] * (1 - sc) ** 2 + r["d"] * (0.5 - sc) ** 2 + r["l"] * (0 - sc) ** 2) / n if n else 0.0
+              se = math.sqrt(var / n) if n else 0.0
+              elo = lambda p: -400 * math.log10(1 / min(max(p, 1e-3), 1 - 1e-3) - 1)
+              out["rungs"].append({"stockfish_elo": rung, "games": n, "w": r["w"], "d": r["d"], "l": r["l"],
+                                   "score": round(sc, 4), "elo_diff": round(elo(sc), 1),
+                                   "elo_diff_lo95": round(elo(sc - 1.96 * se), 1), "elo_diff_hi95": round(elo(sc + 1.96 * se), 1),
+                                   "implied_rating": round(rung + elo(sc), 0), "shards": r["shards"], "reasons": dict(r["reasons"])})
+              print(rung, out["rungs"][-1])
+          json.dump(out, open(f"results/ladder-{name}.json", "w"), indent=2)
+          PY
+          git config user.name "kepler-compute"
+          git config user.email "kepler-compute@users.noreply.github.com"
+          git add results && git commit -m "ladder ${{ inputs.name }}"
+          for i in 1 2 3 4 5 6 7 8; do
+            git pull --rebase -q && git push -q && break
+            echo "push rejected; retry $i"; sleep $((RANDOM % 20 + 5))
+          done
