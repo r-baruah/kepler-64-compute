@@ -1,0 +1,399 @@
+[Event "kepler-train match"]
+[Round "1"]
+[White "kepler"]
+[Black "sf19-2300"]
+[Result "1-0"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqkbnr/2pppppp/8/pp6/5PP1/8/PPPPP2P/RNBQKBNR w KQkq b6 0 1"]
+
+1. e3 b4 2. h4 Bb7 3. Rh2 e6 4. b3 a4 5. bxa4 Nf6 6. c3 h5 7. g5 Nd5 8. a3 b3
+9. Qxb3 Ba6 10. c4 Nb6 11. d4 d5 12. cxd5 Nxd5 13. Rc2 c5 14. Nf3 Bxf1 15. Kxf1
+Nc6 16. dxc5 Be7 17. e4 Nf6 18. Qb5 Qd1+ 19. Ne1 O-O 20. Qxc6 Ng4 21. Nc3 Qd4
+22. Qb5 Bxc5 23. Nf3 Nh2+ 24. Kg2 Nxf3 25. Kxf3 Rab8 26. Qe2 Qg1 27. Qg2 Qe1
+28. Nb5 Rfd8 29. Rc3 Rd4 30. Qc2 Qf1+ 31. Kg3 Qe1+ 32. Kh3 Qh1+ 33. Qh2 Rd3+
+34. Rxd3 Qf1+ 35. Qg2 Qxd3+ 36. Kh2 Rd8 37. Ra2 Be3 38. Bxe3 Qxe3 39. Rf2 Rd3
+40. e5 g6 41. a5 Qe1 42. Nd6 Rxa3 43. Qa8+ Kh7 44. Qa7 Kg8 45. Qxf7+ Kh8 46.
+Qf8+ Kh7 47. Qh6+ Kg8 48. Qxg6+ Kf8 49. Qf7# 1-0
+
+[Event "kepler-train match"]
+[Round "2"]
+[White "sf19-2300"]
+[Black "kepler"]
+[Result "0-1"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqkbnr/2pppppp/8/pp6/5PP1/8/PPPPP2P/RNBQKBNR w KQkq b6 0 1"]
+
+1. e4 e5 2. Nf3 exf4 3. Nc3 b4 4. Na4 Qf6 5. c4 g5 6. Rg1 Ne7 7. h4 gxh4 8. Qe2
+Ng6 9. e5 Qc6 10. b3 Bb7 11. Nh2 Qe6 12. d4 d6 13. Bg2 Bxg2 14. Bb2 f3 15. Qd2
+dxe5 16. Nc5 Qc6 17. O-O-O Nf4 18. dxe5 Ne2+ 19. Kb1 Be7 20. Rxg2 fxg2 21. Qxe2
+Bxc5 22. Ka1 g1=Q 23. Rxg1 Bxg1 24. g5 a4 25. g6 Bxh2 26. gxf7+ Kf8 27. a3 axb3
+28. Qd1 Rxa3+ 29. Bxa3 Bxe5+ 30. Kb1 Qe4+ 31. Kc1 Qe3+ 32. Qd2 Qg1+ 33. Qd1
+Bf4+ 34. Kb2 bxa3+ 35. Kxa3 Qxd1 36. Kb4 b2 37. Ka3 b1=Q 38. c5 Bc1# 0-1
+
+[Event "kepler-train match"]
+[Round "3"]
+[White "kepler"]
+[Black "sf19-2300"]
+[Result "1-0"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqkbnr/1pp1p1pp/5p2/p2p4/5P2/PP3N2/2PPP1PP/RNBQKB1R b KQkq - 0 1"]
+
+1... e5 2. e3 exf4 3. exf4 Bc5 4. d4 Bd6 5. Nc3 Be6 6. Qe2 Kd7 7. g3 Nh6 8. Bb2
+b6 9. Kd2 c6 10. Re1 Bg4 11. h3 Bf5 12. Bg2 Kc8 13. Nd1 Ra7 14. Nh4 Bd7 15. Qh5
+b5 16. Re3 Na6 17. a4 bxa4 18. bxa4 Rb7 19. Rf1 Nc7 20. Bc3 Bb4 21. f5 c5 22.
+Bxb4 cxb4 23. Nb2 Rb8 24. Rfe1 Rg8 25. Qf3 Nf7 26. Qf4 Bc6 27. Nf3 Qd6 28. Qh4
+b3 29. cxb3 Qa3 30. Kc2 Rb6 31. Qxh7 Rd8 32. Qxg7 Na6 33. Nd2 Nb4+ 34. Kd1 Qxb2
+35. Qxf7 Nc2 36. Re8 Bxe8 37. Rxe8 Qc3 38. Rxd8+ Kxd8 39. Qxd5+ Kc7 40. Qc5+
+Qxc5 41. dxc5 Ne3+ 42. Ke2 Rb7 43. Bxb7 Nc4 44. Nxc4 Kxb7 45. Nxa5+ Ka7 46. b4
+Kb8 47. Ke1 Ka7 48. b5 Kb8 49. b6 Ka8 50. Kf1 Kb8 51. c6 Ka8 52. Nc4 Kb8 53.
+Nd6 Ka8 54. g4 Kb8 55. c7+ Ka8 56. c8=Q# 1-0
+
+[Event "kepler-train match"]
+[Round "4"]
+[White "sf19-2300"]
+[Black "kepler"]
+[Result "1-0"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqkbnr/1pp1p1pp/5p2/p2p4/5P2/PP3N2/2PPP1PP/RNBQKB1R b KQkq - 0 1"]
+
+1... e5 2. e3 exf4 3. c4 dxc4 4. Bxc4 fxe3 5. Nc3 exd2+ 6. Bxd2 Ne7 7. Qe2 Qd6
+8. O-O g5 9. Ne4 Qb6+ 10. Be3 c5 11. Rad1 Bg7 12. Bxc5 Qc7 13. Nfxg5 h5 14. Qe3
+Nbc6 15. Nd6+ Qxd6 16. Rxd6 Bd7 17. Rxc6 Be6 18. Qxe6 Bf8 19. Rc7 fxg5 20.
+Rxe7+ Bxe7 21. Rd1 Rh7 22. Qg8+ Bf8 23. Bb5+ Rd7 24. Rxd7 Ra6 25. Qxf8# 1-0
+
+[Event "kepler-train match"]
+[Round "5"]
+[White "kepler"]
+[Black "sf19-2300"]
+[Result "0-1"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqk1nr/pppppp1p/6pb/8/8/5PP1/PPPPP2P/RNBQKBNR w KQkq - 0 1"]
+
+1. d4 d5 2. Bxh6 Nxh6 3. Nc3 e5 4. dxe5 Be6 5. Qd2 d4 6. Qxh6 dxc3 7. bxc3 Nc6
+8. Qg7 Rf8 9. e4 Qd7 10. f4 O-O-O 11. Bd3 Bc4 12. O-O-O Rg8 13. Qf6 Nb8 14. Nf3
+Bxa2 15. Ng5 h6 16. Kb2 Qa4 17. Nxf7 Nd7 18. Qxd8+ Rxd8 19. Nxd8 Nc5 20. Bf1
+Bc4 21. Bxc4 Qxc4 22. Rd4 Na4+ 23. Kc1 Qb5 24. Nf7 Qb2+ 25. Kd1 c5 26. Rd8+ Kc7
+27. Re1 Qa2 28. Rf8 Qa1+ 29. Ke2 Qa2 30. Kd2 Nxc3 31. Nd6 Qa4 32. Re3 Qd4+ 33.
+Rd3 Nxe4+ 34. Nxe4 Qxe4 35. Rf6 g5 36. Rdd6 Qg2+ 37. Kc1 Qf1+ 38. Rd1 Qf2 39.
+fxg5 Qe3+ 40. Kb1 hxg5 41. Rf5 Kb6 42. Rd3 Qe1+ 43. Kb2 c4 44. Rc3 Kb5 45. Rxg5
+a5 46. Rg4 Qxe5 47. Rxc4 Ka6 48. Rc5 Qd4 49. Rh5 b6 50. Rh6 Qd2 51. Rh4 Qf2 52.
+Rd3 Qc5 53. Rf4 Qh5 54. Rd2 Qh8+ 55. c3 Qe5 56. Kc2 Qh8 57. Re2 Qh7+ 58. Kd2
+Qg6 59. Re1 Qc6 60. c4 a4 61. Kc3 Qd6 62. Re2 Qa3+ 63. Kd2 Qa1 64. h4 a3 65.
+Rf3 Ka5 66. Rf5+ Ka6 67. Rd5 a2 68. Re8 Qf6 69. Rdd8 a1=Q 70. Ra8+ Kb7 71. Rxa1
+Qd4+ 72. Ke2 Qxc4+ 73. Ke3 Qc3+ 74. Kf2 Qxa1 75. Re3 Qg7 76. Re4 b5 77. Kf3 Kc6
+78. Rf4 Qc3+ 79. Kg4 b4 80. h5 Qg7+ 81. Kf3 b3 82. Rc4+ Kb5 83. Rc1 Qf6+ 84.
+Kg4 Qe5 85. Kh4 b2 86. Rf1 Qe6 87. g4 Qe3 88. Rb1 Qf2+ 89. Kh3 Qe3+ 90. Kh4
+Qf2+ 91. Kh3 Kc4 92. Rxb2 Qxb2 93. Kg3 Qg7 94. Kf4 Kd5 95. Kf3 Qf6+ 96. Ke3
+Qc3+ 97. Kf4 Qe5+ 98. Kf3 Qc3+ 99. Kf4 Qe5+ 100. Kf3 Qe4+ 101. Kf2 Qf4+ 102.
+Kg2 Ke4 103. h6 Qf3+ 104. Kg1 Qf4 105. Kg2 Ke3 106. h7 Qf2+ 107. Kh3 Kf4 108.
+h8=Q Qg3# 0-1
+
+[Event "kepler-train match"]
+[Round "6"]
+[White "sf19-2300"]
+[Black "kepler"]
+[Result "1-0"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqk1nr/pppppp1p/6pb/8/8/5PP1/PPPPP2P/RNBQKBNR w KQkq - 0 1"]
+
+1. d4 Bg7 2. c4 d5 3. a4 dxc4 4. Na3 Bxd4 5. e4 c3 6. Bc4 Na6 7. Qb3 Nc5 8. Qa2
+Be6 9. Bxe6 fxe6 10. Bf4 Nd3+ 11. Ke2 cxb2 12. Rb1 Nxf4+ 13. gxf4 Qd7 14. Nb5
+Bg7 15. Rd1 Qc6 16. Nh3 a6 17. Na3 Qxa4 18. Ng5 Bc3 19. Rd3 Qa5 20. Nxe6 Rc8
+21. Qb3 Bb4 22. Ng7+ Kf8 23. Nc4 Qa1 24. Ne6+ Ke8 25. Ng7+ Kf8 26. Ne6+ Ke8 27.
+Rhd1 Nh6 28. Ng7+ Kf8 29. Ne6+ Ke8 30. Ng7+ Kf8 31. Qxb4 b1=Q 32. Ne6+ Ke8 33.
+Rd8+ Rxd8 34. Rxd8+ Kf7 35. Ng5+ Kf6 36. e5+ Qxe5+ 37. fxe5+ Kxg5 38. Qxb1 Rxd8
+39. f4+ Kh5 40. Qg1 Nf7 41. Qg3 g5 42. e6 gxf4 43. Qxf4 Nd6 44. Qe5+ Kg6 45.
+Ne3 c6 46. h4 h6 47. h5+ Kh7 48. Qa1 Rf8 49. Qb1+ Kh8 50. Ng4 Rf5 51. Qb2+ Kh7
+52. Qc2 Kg7 53. Qb2+ Kh7 54. Qd2 Rg5 55. Qd3+ Kg7 56. Qd4+ Kg8 57. Nf6+ exf6
+58. Qxd6 Re5+ 59. Kf2 Rf5+ 60. Kg2 Rg5+ 61. Kf3 Rf5+ 62. Kg3 Rg5+ 63. Kf2 Rf5+
+64. Kg3 Rg5+ 65. Kf3 Rf5+ 66. Ke3 Rxh5 67. Qd8+ Kh7 68. Qe7+ Kg6 69. Qf7+ Kf5
+70. e7 Rh3+ 71. Kf2 Rh2+ 72. Kg3 Rd2 73. e8=Q Rd3+ 74. Kf2 Rd2+ 75. Kg1 Rd1+
+76. Kf2 Rd2+ 77. Ke3 Rd3+ 78. Ke2 Rd2+ 79. Kxd2 Kg4 80. Qe3 h5 81. Ke2 b6 82.
+Qc4+ Kf5 83. Qce4# 1-0
+
+[Event "kepler-train match"]
+[Round "7"]
+[White "kepler"]
+[Black "sf19-2300"]
+[Result "0-1"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqkbnr/pppppp2/8/6pp/8/2N3P1/PPPPPP1P/1RBQKBNR b Kkq - 0 1"]
+
+1... d5 2. d4 g4 3. Qd3 Bg7 4. Bf4 h4 5. Bg2 h3 6. Bxd5 c6 7. Bc4 Qxd4 8. Qxd4
+Bxd4 9. Rd1 Bg7 10. f3 Nh6 11. e3 Na6 12. Ke2 Nc5 13. e4 b6 14. a3 gxf3+ 15.
+Nxf3 b5 16. Ba2 Bxc3 17. bxc3 Nxe4 18. Rd3 Bg4 19. Rb1 Nc5 20. Rd2 Ne4 21. Rd3
+Nc5 22. Rd2 Na4 23. Rd3 a6 24. Bd2 Nc5 25. Rd4 e5 26. Rd6 Ne4 27. Rxh6 Bxf3+
+28. Ke1 Rxh6 29. Bxh6 Rd8 30. Bb3 Ke7 31. c4 c5 32. cxb5 axb5 33. c4 Rd6 34.
+Be3 Rd3 35. Bg1 Rd2 36. Bd1 Bxd1 37. Rxd1 Rg2 38. Kf1 bxc4 39. a4 c3 40. Bxc5+
+Ke6 41. Rd3 Rxh2 42. g4 Nxc5 43. Rxc3 Kd6 44. Rf3 Nd7 45. Rxf7 Rh1+ 46. Kf2 Ra1
+47. Kg3 Ra3+ 48. Kh2 e4 49. Rf5 Ne5 50. Rf4 e3 51. Rd4+ Kc5 52. Rd1 e2 53. Rc1+
+Kd5 54. g5 Ng4+ 55. Kh1 Re3 56. Re1 Rd3 57. Rg1 Rd1 58. a5 Kc4 59. a6 e1=R 60.
+Rxe1 Rxe1# 0-1
+
+[Event "kepler-train match"]
+[Round "8"]
+[White "sf19-2300"]
+[Black "kepler"]
+[Result "1-0"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqkbnr/pppppp2/8/6pp/8/2N3P1/PPPPPP1P/1RBQKBNR b Kkq - 0 1"]
+
+1... e6 2. d4 Qe7 3. h4 g4 4. Bg2 d5 5. Bf4 c6 6. e3 b5 7. a3 a5 8. e4 b4 9.
+Nce2 Nd7 10. Bg5 f6 11. Bd2 Rh7 12. axb4 axb4 13. Ra1 Nb6 14. Rxa8 Nxa8 15. Nc1
+Qa7 16. Nge2 Nb6 17. Nd3 Nc4 18. exd5 exd5 19. Bc1 Bf5 20. Ndf4 Qa2 21. Nd3 Kd8
+22. Nef4 Qa7 23. Kf1 Qxd4 24. Kg1 Bd6 25. b3 Na3 26. Ne2 Qa7 27. Be3 Qd7 28.
+Bf4 Be4 29. Kh2 Re7 30. Bxd6 Qxd6 31. Bxe4 Rxe4 32. Nef4 Qe7 33. Qd2 Kc7 34.
+Qc1 Nb5 35. Qa1 Qd6 36. Qa8 Ne7 37. Qa5+ Kb7 38. Ra1 Nc8 39. Kg2 f5 40. Nxh5
+Nb6 41. Ng7 Qf8 42. Nh5 Qe7 43. Qa6+ Kc7 44. Kf1 Qf8 45. Nhf4 Qd6 46. Qa5 Kb7
+47. h5 Qe7 48. Qa6+ Kc7 49. Kg1 Qf6 50. Qa5 Qc3 51. Rc1 Kb7 52. Kf1 Re8 53. Kg2
+Re4 54. Rd1 Qd4 55. Ra1 Qc3 56. Rf1 Qd4 57. h6 Kc7 58. Rc1 Kd6 59. Rh1 Re8 60.
+Qxb4+ Qxb4 61. Nxb4 c5 62. Na6 Nc7 63. h7 Nxa6 64. h8=R Rxh8 65. Rxh8 Nb4 66.
+c3 Na2 67. Ne2 Kc7 68. Rf8 Kc6 69. Rxf5 c4 70. b4 Na4 71. Nd4+ Kd6 72. Rf6+ Kd7
+73. Ra6 N4xc3 74. Ra3 Kd6 75. Nc2 Kc6 76. Nd4+ Kd6 77. Nc2 Kc6 78. f3 gxf3+ 79.
+Kxf3 Kd6 80. g4 Ke5 81. b5 Kd6 82. b6 Kc6 83. b7 Kxb7 84. g5 Kc7 85. g6 Ne4 86.
+Rxa2 Nf6 87. Kf4 Kb7 88. Kf5 Ne8 89. Kg5 Kb8 90. Ne3 Kb7 91. Nc2 Kb8 92. Ra3 c3
+93. Nd4 c2 94. Nxc2 d4 95. Rb3+ Ka8 96. Rd3 Kb7 97. Rf3 Kc6 98. Rf7 Kc5 99.
+Nxd4 Kxd4 100. Re7 Nd6 101. Kf4 Nb5 102. g7 Nc3 103. Kg5 Nd5 104. Rd7 Kc5 105.
+g8=Q Nb4 106. Rc7+ Nc6 107. Qe6 Kd4 108. Qd6+ Ke3 109. Qxc6 Kd3 110. Qc3+ Ke2
+111. Qc2+ Ke3 112. Kf5 Kf3 113. Qd2 Kg3 114. Rc2 Kh4 115. Qb4+ Kh5 116. Qd2 Kh4
+117. Rc3 Kh5 118. Rh3# 1-0
+
+[Event "kepler-train match"]
+[Round "9"]
+[White "kepler"]
+[Black "sf19-2300"]
+[Result "0-1"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "r1bqkbnr/p1p1pppp/2np4/1p6/8/P4PP1/1PPPP2P/RNBQKBNR w KQkq - 0 1"]
+
+1. d4 e5 2. d5 Nb8 3. Qd3 Nf6 4. Qxb5+ c6 5. dxc6 Qc7 6. Qd3 Nxc6 7. b4 Nd4 8.
+Nc3 a5 9. b5 d5 10. Kd1 Bf5 11. b6 Qb7 12. Qe3 Bd6 13. Ra2 Bxc2+ 14. Rxc2 Nxc2
+15. Qg5 O-O 16. Kxc2 d4 17. Nd1 Qxb6 18. Bh3 Rac8+ 19. Bxc8 Rxc8+ 20. Kd2 Bb4+
+21. axb4 Qxb4+ 22. Nc3 Ne4+ 23. fxe4 h6 24. Ke1 hxg5 25. Kf2 Qxc3 26. Nf3 Qa1
+27. Nxe5 d3 28. Nxd3 Qa4 29. Bxg5 Re8 30. Nc5 Qb4 31. Rc1 f6 32. Bf4 Kh7 33. h4
+a4 34. g4 Qb2 35. h5 Qd4+ 36. Kf3 Qb4 37. Bh2 Kg8 38. Bf4 Kh7 39. Bh2 Qb2 40.
+Rc4 Qb5 41. Rc1 Qb4 42. Bg3 Qb5 43. Bh2 Qb2 44. Rc4 a3 45. Nd3 Qa1 46. Rc1 Qd4
+47. Rc2 Qxe4+ 48. Kg3 Qe3+ 49. Kh4 Qg5+ 50. Kg3 f5 51. Kg2 fxg4 52. Kf1 Rf8+
+53. Kg2 Qf5 54. Kg3 Qxh5 55. Nf4 Qa5 56. Ra2 Rf7 57. e4 Rf8 58. Kxg4 Kg8 59.
+Ne6 Rf6 60. Nf4 Ra6 61. Nd5 Qb5 62. Kf5 Qb3 63. Rf2 a2 64. Rxa2 Qh3+ 65. Ke5
+Qh5+ 66. Kd4 Rxa2 67. Bd6 Qf3 68. Bb4 g5 69. Ne7+ Kg7 70. Nd5 Kh7 71. Be7 g4
+72. Bb4 Kg6 73. Ke5 Kf7 74. Kd4 g3 75. Ke5 g2 76. Bc5 Ra5 77. Kd6 Qxe4 78. Bb6
+Qxd5+ 79. Kc7 Ra6 80. Kb8 Rxb6+ 81. Kc8 Rb5 82. Kc7 g1=Q 83. Kc8 Qdd4 84. Kc7
+Qd5 85. Kc8 Rb2 86. Kc7 Qe6 87. Kd8 Qd5+ 88. Kc7 Qc1# 0-1
+
+[Event "kepler-train match"]
+[Round "10"]
+[White "sf19-2300"]
+[Black "kepler"]
+[Result "1-0"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "r1bqkbnr/p1p1pppp/2np4/1p6/8/P4PP1/1PPPP2P/RNBQKBNR w KQkq - 0 1"]
+
+1. e4 a6 2. a4 b4 3. d4 d5 4. Bg2 a5 5. Bf1 e6 6. e5 g6 7. Be3 Qe7 8. Nd2 h5 9.
+Nb3 h4 10. g4 f6 11. Nh3 fxe5 12. Bb5 Bd7 13. Bxc6 Bxc6 14. dxe5 Bh6 15. Qd2
+Bxe3 16. Qxe3 Rh7 17. c3 Kd8 18. Nf4 Be8 19. O-O g5 20. Nd3 bxc3 21. bxc3 h3
+22. c4 Bg6 23. cxd5 exd5 24. Ndc5 Kc8 25. Qd2 c6 26. e6 Rg7 27. Rfd1 Qc7 28.
+Nd7 Ra7 29. Nbc5 Bh7 30. Ra2 Kd8 31. Re1 Qf4 32. Qb2 d4 33. Qb6+ Qc7 34. Qb2
+Qf4 35. Qf2 Rc7 36. Ne5 Ke8 37. Rd2 d3 38. Rb2 Rc8 39. Rd2 Rcc7 40. Nexd3 Bxd3
+41. Red1 Bg6 42. Rd8+ Ke7 43. R8d7+ Ke8 44. Rd8+ Ke7 45. Na6 Qe5 46. Nxc7 Nf6
+47. Qa7 Bd3 48. R8xd3 Nd5 49. Nxd5+ Kxe6 50. Nf4+ gxf4 51. Rd6+ Qxd6 52. Rxd6+
+Kxd6 53. Qd4+ Kc7 54. Qa7+ Kd6 55. Qxg7 c5 56. Qf6+ Kd7 57. g5 c4 58. Qf5+ Kd8
+59. g6 c3 60. Qxf4 Kd7 61. g7 c2 62. Qc4 c1=B 63. Qxc1 Ke6 64. Qg5 Kd7 65. g8=Q
+Kc7 66. Qc5+ Kd7 67. Qcc4 Kd6 68. Qge6# 1-0
+
+[Event "kepler-train match"]
+[Round "11"]
+[White "kepler"]
+[Black "sf19-2300"]
+[Result "0-1"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqkbnr/pp1p1ppp/2p1p3/8/4P3/1P6/P1PP1PPP/RNBQKBNR b KQkq - 0 1"]
+
+1... c5 2. Nc3 a6 3. h4 Nc6 4. Rh3 Nf6 5. f4 d6 6. g4 g6 7. Bb2 h5 8. g5 Nh7 9.
+e5 dxe5 10. fxe5 Bg7 11. Na4 Bxe5 12. Bxe5 Nxe5 13. Qe2 Qd6 14. c3 O-O 15. Nxc5
+Ng4 16. Ne4 Qe7 17. d4 e5 18. Rd1 b5 19. Rd2 Bf5 20. Bg2 Rae8 21. d5 f6 22.
+gxf6 Qd8 23. f7+ Rxf7 24. Rh1 Nhf6 25. Ng3 Rd7 26. Nxf5 gxf5 27. c4 Qa5 28. Nh3
+bxc4 29. bxc4 e4 30. Kf1 Qc3 31. Kg1 Rb7 32. Nf2 f4 33. Nd1 Rb1 34. Rh3 f3 35.
+Qe1 Qxc4 36. Bf1 Qc5+ 37. Kh1 Rd8 38. d6 Kh8 39. d7 e3 40. Rxf3 Qc6 41. Bg2 Qc7
+42. Qg1 exd2 43. Rf1 Qxd7 44. Bf3 Qc7 45. Qg2 Qd7 46. Qg1 Rg8 47. Bg2 Rc1 48.
+Qb6 Qb5 49. Qxb5 axb5 50. Bf3 b4 51. Kg1 b3 52. axb3 Re8 53. Kg2 Kg8 54. b4 Kg7
+55. Rg1 Kg6 56. Kh3 Kh6 57. Rg2 Rc2 58. b5 Ra2 59. b6 Rd8 60. b7 Rg8 61. Rg3
+Rb8 62. Rg1 Ra1 63. Kg3 Ra2 64. Kh3 Ra1 65. Kg3 Ne5 66. Bh1 Nfg4 67. Be4 Nf6
+68. Bh1 Ra6 69. Kf2 Neg4+ 70. Ke2 Rd8 71. Kf3 Re6 72. Bg2 Re1 73. Rh1 Rd3+ 74.
+Kf4 Nd7 75. Be4 Rd4 76. Rh3 Ngf6 77. Nb2 Nxe4 78. Ra3 Nef6+ 79. Kf3 Ne5+ 80.
+Kg3 Nfd7 81. Kf2 Rde4 82. Rb3 Kh7 83. b8=Q Nxb8 84. Kg3 R4e2 85. Rc3 Ned7 86.
+Rf3 Kh6 87. Rf4 Kg6 88. Rb4 Na6 89. Rc4 Nac5 90. Rd4 Ne4+ 91. Rxe4 Rxe4 92. Kf2
+Ne5 93. Kg3 R4e3+ 94. Kf2 Nd3+ 95. Kg2 Nxb2 96. Kh2 R1e2+ 97. Kg1 Nd3 98. Kf1
+Nc1 99. Kg1 Rg3+ 100. Kf1 Rg1+ 101. Kxg1 Kf5 102. Kf1 d1=Q# 0-1
+
+[Event "kepler-train match"]
+[Round "12"]
+[White "sf19-2300"]
+[Black "kepler"]
+[Result "0-1"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqkbnr/pp1p1ppp/2p1p3/8/4P3/1P6/P1PP1PPP/RNBQKBNR b KQkq - 0 1"]
+
+1... Qa5 2. Qf3 b6 3. a3 h5 4. Bb2 Qc5 5. Nc3 Rh6 6. b4 Qe7 7. Qd1 d5 8. e5 a5
+9. Be2 axb4 10. Nb1 bxa3 11. Bxa3 Qg5 12. g3 Bxa3 13. Nxa3 Qxe5 14. c3 Ba6 15.
+f4 Bxe2 16. Nxe2 Qf5 17. Nd4 Qe4+ 18. Kf2 h4 19. Nab5 hxg3+ 20. hxg3 Rxa1 21.
+Nxc6 Rxd1 22. Nc7+ Kf8 23. Nxe6+ fxe6 24. g4 Rxd2+ 25. Kg1 Rxh1# 0-1
+
+[Event "kepler-train match"]
+[Round "13"]
+[White "kepler"]
+[Black "sf19-2300"]
+[Result "1-0"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqkbnr/ppp1ppp1/8/7p/3p4/N3P1PP/PPPP1P2/R1BQKBNR w KQkq - 0 1"]
+
+1. Nf3 Nc6 2. exd4 e6 3. c3 h4 4. Nxh4 Bxa3 5. bxa3 g5 6. Nf3 b6 7. Bg2 Bb7 8.
+d3 Qd5 9. O-O O-O-O 10. Ne5 Qxg2+ 11. Kxg2 Nxe5+ 12. f3 Ng6 13. Bxg5 Rd7 14.
+Qa4 a6 15. Rfe1 Rh5 16. h4 b5 17. Qb4 f6 18. Rxe6 Rdh7 19. Re8+ Kd7 20. Rxg8
+Ne7 21. Rb8 fxg5 22. Rxb7 gxh4 23. Qa5 Nd5 24. Qxa6 hxg3 25. Qxb5+ Kd6 26. Qa6+
+Ke7 27. Re1+ Kf7 28. Qe6+ Kg7 29. Rxc7+ Nxc7 30. Qe7+ Kg8 31. Qd8+ Kf7 32. Re7+
+Kg6 33. Qd6+ Kf5 34. Re5+ Kf4 35. Qf6+ Rf5 36. Qxf5# 1-0
+
+[Event "kepler-train match"]
+[Round "14"]
+[White "sf19-2300"]
+[Black "kepler"]
+[Result "1-0"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqkbnr/ppp1ppp1/8/7p/3p4/N3P1PP/PPPP1P2/R1BQKBNR w KQkq - 0 1"]
+
+1. Bg2 h4 2. g4 Nc6 3. exd4 Qxd4 4. Ne2 Qb4 5. c3 Qb6 6. d4 g6 7. d5 Ne5 8. Nd4
+a5 9. Bf4 Bg7 10. Be3 Qxb2 11. O-O Bd7 12. Ndc2 b5 13. Bd4 Rh6 14. c4 Nf3+ 15.
+Bxf3 Bxd4 16. Rb1 Qc3 17. Rb3 Bxf2+ 18. Kh1 Qe5 19. Rxf2 a4 20. Rb1 bxc4 21.
+Qe2 Qg3 22. Rg1 Qd6 23. g5 Rh7 24. Qe3 Bxh3 25. Nd4 Bd7 26. Rc2 h3 27. Nxc4 Qa6
+28. Ne5 Qd6 29. Nxd7 h2 30. Rf1 Qxd7 31. d6 Ra6 32. dxc7 Qc8 33. Rb1 a3 34. Rb8
+Kf8 35. Qe5 f6 36. Rxc8+ Kg7 37. Bd5 Ra8 38. Rxg8+ Rxg8 39. Qxe7+ Kh8 40. Qxf6+
+Rhg7 41. c8=B Kh7 42. Ne6 Rxc8 43. Qxg7# 1-0
+
+[Event "kepler-train match"]
+[Round "15"]
+[White "kepler"]
+[Black "sf19-2300"]
+[Result "1-0"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqkbr1/p1pppppp/1p5n/8/1P6/P1N2P2/2PPP1PP/R1BQKBNR b KQq - 0 1"]
+
+1... d5 2. d4 a5 3. b5 Nf5 4. Nh3 h5 5. g4 hxg4 6. fxg4 Nd6 7. Qd3 e6 8. Qh7 c5
+9. Nd1 Nd7 10. g5 cxd4 11. Ra2 Qe7 12. Nhf2 Bb7 13. Qxg8 e5 14. Rb2 O-O-O 15.
+Qh7 Kb8 16. Bg2 e4 17. Bf4 Qe8 18. h4 Ka7 19. a4 Nc5 20. Ra2 Ne6 21. Bh2 Nc4
+22. c3 Qd7 23. O-O Bd6 24. cxd4 Nxd4 25. Bxd6 g6 26. Bh2 Rc8 27. Bh3 Qe8 28.
+Bxc8 Qxc8 29. Qg7 Nb3 30. Nh1 Nd6 31. Bxd6 Nd2 32. Rxd2 Qg4+ 33. Bg3 Qh3 34.
+Rxf7 Qc8 35. Rc2 Qa8 36. Rcc7 Kb8 37. Rxb7+ Kc8 38. Rf8# 1-0
+
+[Event "kepler-train match"]
+[Round "16"]
+[White "sf19-2300"]
+[Black "kepler"]
+[Result "0-1"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqkbr1/p1pppppp/1p5n/8/1P6/P1N2P2/2PPP1PP/R1BQKBNR b KQq - 0 1"]
+
+1... e5 2. e4 Nc6 3. Bc4 Qg5 4. g4 Qh4+ 5. Kf1 a5 6. Nd5 Bd6 7. b5 Ne7 8. Qe1
+Qxe1+ 9. Kxe1 Rf8 10. Nc3 Ng6 11. Bd5 Rb8 12. Nge2 Nh4 13. Kf2 g5 14. a4 Rg8
+15. Rd1 Rg6 16. Kg3 Be7 17. d4 c6 18. Bb3 exd4 19. Nxd4 Bd8 20. Kf2 Bc7 21. Nf5
+Ng8 22. Nxh4 gxh4 23. Be3 Bxh2 24. Rd3 Ne7 25. Rad1 Be5 26. f4 Bxc3 27. Rxc3
+Rxg4 28. Bd4 Rxf4+ 29. Ke3 Rg4 30. Be5 Rb7 31. Bf4 c5 32. Bd6 f5 33. Re1 Rxe4+
+34. Kf2 Ra7 35. Rg1 Bb7 36. Rg7 Nd5 37. Rf3 f4 38. Bxd5 Bxd5 39. Rd3 Bc4 40.
+Rf3 Re2+ 41. Kg1 Re6 42. Bb8 Rb7 43. Bxf4 Bd5 44. Rh3 Be4 45. c4 Kf8 46. Rg5 d6
+47. Rxh4 Bc2 48. Rh2 Bxa4 49. Rhg2 Rf7 50. Rg8+ Ke7 51. R2g7 Rxg7+ 52. Rxg7+
+Kf6 53. Rxh7 Bb3 54. Bh2 Bxc4 55. Rb7 Re1+ 56. Kf2 Re2+ 57. Kg1 Bd5 58. Rxb6
+Rg2+ 59. Kf1 Rxh2 60. Rb8 Kf7 61. Rc8 Rb2 62. Rh8 Rxb5 63. Ke1 Rb2 64. Kf1 c4
+65. Rh5 c3 66. Rh8 Bc4+ 67. Kg1 c2 68. Rh7+ Kg6 69. Rg7+ Kxg7 70. Kf2 c1=Q+ 71.
+Kf3 Rb3+ 72. Kg4 Be6+ 73. Kh4 Rh3# 0-1
+
+[Event "kepler-train match"]
+[Round "17"]
+[White "kepler"]
+[Black "sf19-2300"]
+[Result "0-1"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqkbnr/pppp2pp/8/5p2/1P2p3/2P1P3/P2P1PPP/RNBQKBNR w KQkq f6 0 1"]
+
+1. Na3 Nf6 2. h4 Nc6 3. Rh3 a5 4. b5 Ne5 5. Qa4 d5 6. Qd4 Bd6 7. f4 exf3 8.
+gxf3 f4 9. Rh1 O-O 10. exf4 c5 11. Qf2 Ng6 12. Ne2 Nxf4 13. Nxf4 Bxf4 14. Kd1
+Bd6 15. d3 Kh8 16. Rb1 b6 17. h5 h6 18. Rb2 Be5 19. Nb1 Bf5 20. f4 Bd6 21. Be2
+c4 22. Qg3 cxd3 23. Bxd3 Be4 24. Rhh2 Rc8 25. Rh4 Re8 26. Qh3 Qc7 27. Rf2 a4
+28. Re2 Red8 29. Rb2 Qf7 30. f5 a3 31. Rc2 Qe7 32. Re2 Qd7 33. Rd2 Qa7 34. Rf2
+Re8 35. Bc2 Qe7 36. Bd2 Qa7 37. Bc1 Qd7 38. Nxa3 Rc7 39. Bb2 Ra7 40. c4 Bxa3
+41. Bxa3 dxc4+ 42. Rd2 Qxb5 43. Kc1 Bxc2 44. Rxc2 Re1+ 45. Kd2 Qe8 46. Bb4 Qe2+
+47. Kc3 Nd5+ 48. Kd4 Qe5+ 49. Kxc4 Ne3+ 50. Kd3 Rd7+ 51. Bd6 Rxd6+ 52. Rd4
+Rxd4+ 53. Kc3 Qd6 54. a3 Qc5+ 55. Kb2 Rb4+ 56. axb4 Qxb4+ 57. Ka2 Qb1+ 58. Ka3
+Nxc2+ 59. Ka4 Qb4# 0-1
+
+[Event "kepler-train match"]
+[Round "18"]
+[White "sf19-2300"]
+[Black "kepler"]
+[Result "1-0"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqkbnr/pppp2pp/8/5p2/1P2p3/2P1P3/P2P1PPP/RNBQKBNR w KQkq f6 0 1"]
+
+1. b5 d5 2. Bb2 h5 3. h4 Rh6 4. Be2 Be6 5. Na3 Bf7 6. g3 a6 7. Nh3 Be7 8. bxa6
+Nxa6 9. Nb5 Rb6 10. Qc2 Nc5 11. Nf4 Qd7 12. Nd4 Na4 13. Nb3 Nxb2 14. Qxb2 c5
+15. Qc1 Nf6 16. O-O Qd6 17. Qc2 Kf8 18. Kg2 Ng4 19. Rab1 Ra3 20. Bxg4 fxg4 21.
+Na1 Rba6 22. d4 Rxa2 23. dxc5 Qxc5 24. Qc1 Qc4 25. Nc2 g6 26. Rh1 R6a5 27. Rf1
+Bd6 28. Rxb7 Qc8 29. Rb6 Qc7 30. Rb1 Rc5 31. Rb2 Rxb2 32. Qxb2 Bxf4 33. gxf4
+Rxc3 34. Nd4 Rc4 35. Nb5 Qb6 36. Qh8+ Bg8 37. Nd4 Rc7 38. Ra1 Rc8 39. f5 gxf5
+40. Nxf5 Qg6 41. Ra7 Re8 42. Rb7 Rc8 43. Rg7 Qe6 44. Qxh5 Rc6 45. Qh8 d4 46.
+Nxd4 Qa2 47. Rb7 Qf7 48. Rb8+ Qe8 49. Rxe8+ Kxe8 50. Qxg8+ Ke7 51. Nxc6+ Kd6
+52. Nd4 g3 53. Qg6+ Kc7 54. Qh7+ Kd6 55. Qh6+ Kc7 56. Qe6 gxf2 57. Nb5+ Kd8 58.
+Qf7 f1=Q+ 59. Kxf1 Kc8 60. Qc7# 1-0
+
+[Event "kepler-train match"]
+[Round "19"]
+[White "kepler"]
+[Black "sf19-2300"]
+[Result "0-1"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqkbnr/pppp2pp/4p3/5p2/8/P5P1/1PPPPP1P/RNBQKBNR w KQkq - 0 1"]
+
+1. d4 d5 2. Nf3 c6 3. Qd3 Be7 4. Ne5 Nd7 5. Bg2 c5 6. a4 Qa5+ 7. Bd2 Qd8 8. a5
+cxd4 9. Nf3 Nc5 10. Qxd4 Na6 11. Ne5 Nf6 12. Qa4+ Nd7 13. Nd3 O-O 14. Qd4 Bf6
+15. Qe3 Ndb8 16. O-O Nc6 17. h4 e5 18. Ne1 Nc7 19. Ra4 Be6 20. Kh2 h6 21. Qb3
+Qe8 22. Qxb7 Rf7 23. Qb3 e4 24. Qa2 d4 25. Qa1 Rd8 26. Qa3 Ne5 27. b3 Nb5 28.
+Qa2 Rc7 29. Kh1 g5 30. f4 Ng6 31. fxg5 hxg5 32. hxg5 Be5 33. Qb2 Bxg3 34. Kg1
+Qe7 35. Bc1 Qh7 36. Nf3 exf3 37. Rxf3 Qh2+ 38. Kf1 f4 39. Rxg3 Qxg3 40. Rb4 f3
+41. exf3 Re8 42. Be3 Bh3 43. c4 Rxe3 44. Qf2 Rxf3 45. Ke1 Qxf2+ 46. Kd1 Re3 47.
+Bd5+ Kf8 48. Nd2 Qe1+ 49. Kc2 d3+ 50. Kb2 Qxd2+ 51. Kb1 Qd1+ 52. Kb2 Qe2+ 53.
+Ka1 d2 54. Be4 Rxe4 55. cxb5 d1=R# 0-1
+
+[Event "kepler-train match"]
+[Round "20"]
+[White "sf19-2300"]
+[Black "kepler"]
+[Result "0-1"]
+[Termination "checkmate"]
+[SetUp "1"]
+[FEN "rnbqkbnr/pppp2pp/4p3/5p2/8/P5P1/1PPPPP1P/RNBQKBNR w KQkq - 0 1"]
+
+1. c4 Qf6 2. d4 b6 3. Bg2 Nc6 4. Qa4 Bb7 5. Be3 Bc5 6. Qd1 Bxd4 7. Bxd4 Qxd4 8.
+Qc2 Nb4 9. axb4 Bxg2 10. Nf3 Qe4 11. Qc3 Bxh1 12. Qxg7 Bxf3 13. Nc3 Qg4 14.
+Qxh8 Bc6 15. Qxh7 Nf6 16. Qh6 Kf7 17. Rc1 Qxc4 18. b5 Bb7 19. Nd1 Qxb5 20. h3
+Qb4+ 21. Rc3 Nd5 22. Qh7+ Ke8 23. Qg6+ Ke7 24. f3 Nxc3 25. Qg5+ Kd6 26. bxc3
+Qc5 27. Qf4+ Qe5 28. Ne3 Qxf4 29. gxf4 Rh8 30. h4 Rxh4 31. Kf1 Rxf4 32. Nc4+
+Rxc4 33. e4 fxe4 34. Ke1 e3 35. Ke2 Rxc3 36. Ke1 Bxf3 37. Kf1 Rc1# 0-1
+
