@@ -14,3 +14,6 @@ that split training and testing into independent work units.
 
 Everything here is depth-limited and seeded, so every result can be reproduced from the files in this repository.
 The method and the rules for what counts as a result are in the main repository under `docs/v1/`.
+
+**How to run things:** see [RUNBOOK.md](RUNBOOK.md).
+- `determinism-check`: reruns fixed reference units and compares their result hashes with the laptop's. It runs on every engine sync and inside every campaign.
