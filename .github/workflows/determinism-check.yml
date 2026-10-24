@@ -1,0 +1,25 @@
+# Determinism rule D8 (docs/v1/08_DISTRIBUTED_COMPUTE.md in r-baruah/kepler-64):
+# rerun the reference units and compare result hashes with the laptop's.
+name: determinism-check
+
+on:
+  workflow_dispatch:
+  push:
+    paths: ['engine/**']
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: pinned toolchain (engine/rust-toolchain.toml)
+        working-directory: engine
+        run: rustup toolchain install && rustc --version
+      - uses: Swatinem/rust-cache@v2
+        with: { workspaces: engine }
+      - run: cargo build --release --locked -p kepler-train
+        working-directory: engine
+      - working-directory: engine
+        run: |
+          nproc; lscpu | grep 'Model name' || true
+          target/release/kepler-train determinism-check --reference data/determinism/reference.json

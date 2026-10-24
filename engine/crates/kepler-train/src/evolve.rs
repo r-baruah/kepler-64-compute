@@ -85,12 +85,12 @@ pub fn with_theta(base: &Params, th: &[f32; NP]) -> Params {
 
 /// T4: perturbation size `c_K = c0 / (K+1)^0.101`.
 pub fn c_k(c0: f64, k: u64) -> f64 {
-    c0 / (k as f64 + 1.0).powf(C_EXP)
+    c0 / libm::pow(k as f64 + 1.0, C_EXP)
 }
 
 /// T4: step size `a_K = a0 / (K+1+A)^0.602`.
 pub fn a_k(a0: f64, big_a: f64, k: u64) -> f64 {
-    a0 / (k as f64 + 1.0 + big_a).powf(A_EXP)
+    a0 / libm::pow(k as f64 + 1.0 + big_a, A_EXP)
 }
 
 /// Seed of shard `k` of iteration `iter` under round seed `seed`.
@@ -128,6 +128,9 @@ pub struct EvolvePlay {
     /// Milliseconds per move (instead of --depth)
     #[arg(long)]
     movetime: Option<u64>,
+    /// Allow --movetime; the shard then says "deterministic": false (rule D3)
+    #[arg(long = "allow-nondeterministic")]
+    allow_nondeterministic: bool,
     #[arg(long, default_value_t = 10)]
     threads: usize,
     #[arg(long = "max-plies", default_value_t = 300)]
@@ -250,6 +253,12 @@ pub struct EvolveShard {
     pub wdl: Wdl,
     pub elapsed_ms: u64,
     pub config: serde_json::Value,
+    /// False only for units run with `--allow-nondeterministic` (rule D3).
+    #[serde(default = "util::yes")]
+    pub deterministic: bool,
+    /// Canonical hash of the deterministic content (rule D6, `util::canonical_hash`).
+    #[serde(default)]
+    pub result_hash: Option<String>,
 }
 
 /// Play one shard: `pairs` opening pairs of `theta+` against `theta-`.
@@ -267,6 +276,7 @@ pub fn play_evolve_shard(
     if pairs == 0 {
         return Err("--pairs must be >= 1".into());
     }
+    util::check_time_limit(o.movetime.is_some(), o.allow_nondeterministic)?;
     let limits = limits_from(o.depth, o.movetime)?;
     let delta = derive_delta(seed, iter, k);
     let ck = c_k(c0, iter);
@@ -335,6 +345,8 @@ pub fn play_evolve_shard(
             "plus_hash": gen_hash(&plus), "minus_hash": gen_hash(&minus),
             "note": "pentanomial = pairs scoring 0, 0.5, 1, 1.5, 2 for theta+",
         }),
+        deterministic: !o.allow_nondeterministic,
+        result_hash: None,
     })
 }
 
@@ -411,7 +423,12 @@ pub fn reduce_iter(
     shards: &[EvolveShard],
     spec: &str,
 ) -> Result<IterSummary, String> {
+    // D7: combine in (shard_index, seed, result_hash) order, whatever order they arrive in
+    let mut sorted = shards.to_vec();
+    sorted.sort_by_key(|s| (s.shard_index, s.seed, s.result_hash.clone()));
+    let shards = &sorted[..];
     let first = shards.first().ok_or("no shards to reduce")?;
+    util::check_same_determinism(shards.iter().map(|s| s.deterministic))?;
     let want = gen_hash(&st.params);
     let k = st.iter;
     let ck = c_k(st.c0, k);
@@ -716,6 +733,8 @@ pub fn run_shard(a: ShardArgs) -> Result<(), String> {
     sh.config["generation"] = json!(gen_.generation);
     sh.config["gen_file"] = json!(a.gen_file);
     sh.config["openings"] = json!(a.openings);
+    sh.config["openings_hash"] = json!(util::file_hash(&a.openings)?);
+    sh.result_hash = Some(util::result_hash_of(&sh));
     write_json(a.out.clone(), &serde_json::to_value(&sh).unwrap())?;
     println!(
         "evolve-shard {}: iter {} shard {} | {} pairs in {:.1}s | score+ {:.4} | penta {:?} | c_K {:.4}",
@@ -746,13 +765,7 @@ fn read_shards(files: &[PathBuf], dir: &Option<PathBuf>) -> Result<Vec<EvolveSha
     if files.is_empty() {
         return Err("give --shards <files...> or --shard-dir".into());
     }
-    files
-        .iter()
-        .map(|p| {
-            let s = std::fs::read_to_string(p).map_err(|e| format!("{}: {e}", p.display()))?;
-            serde_json::from_str(&s).map_err(|e| format!("{}: {e}", p.display()))
-        })
-        .collect()
+    files.iter().map(|p| util::load_shard(p)).collect()
 }
 
 pub fn run_reduce(a: ReduceArgs) -> Result<(), String> {
@@ -850,6 +863,8 @@ mod tests {
             wdl: Wdl { w: 0, d: 2, l: 0 },
             elapsed_ms: 1,
             config: json!({"depth": 1, "movetime_ms": null, "pairs": 1}),
+            deterministic: true,
+            result_hash: None,
         }
     }
 
@@ -998,7 +1013,9 @@ mod tests {
         let mut files = Vec::new();
         for (k, s) in sh.iter().enumerate() {
             let f = dir.join(format!("s{k}.json"));
-            write_json(f.clone(), &serde_json::to_value(s).unwrap()).unwrap();
+            let mut s = s.clone();
+            s.result_hash = Some(util::result_hash_of(&s));
+            write_json(f.clone(), &serde_json::to_value(&s).unwrap()).unwrap();
             files.push(f.to_str().unwrap().to_string());
         }
         let sum = reduce_iter(&mut st, &sh, &g.spec).unwrap();

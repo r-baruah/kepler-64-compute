@@ -20,11 +20,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
+      - name: pinned toolchain (engine/rust-toolchain.toml)
+        working-directory: engine
+        run: rustup toolchain install && rustc --version
       - uses: Swatinem/rust-cache@v2
         with: { workspaces: engine }
-      - run: cargo build --release -p kepler-train
+      - run: cargo build --release --locked -p kepler-train
         working-directory: engine
+      - name: determinism check (docs/v1/08 rule D8)
+        working-directory: engine
+        run: target/release/kepler-train determinism-check --reference data/determinism/reference.json
       - uses: actions/upload-artifact@v4
         with: { name: kepler-train, path: engine/target/release/kepler-train, retention-days: 2 }
       - id: m
