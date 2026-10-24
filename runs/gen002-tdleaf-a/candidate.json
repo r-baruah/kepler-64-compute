@@ -1,20 +1,20 @@
 {
   "acceptance": null,
   "constants": {
-    "alpha": 0.28693240880966187,
+    "alpha": 0.286928653717041,
     "beta": 0.0,
     "c": 2,
     "f_acc": 0.800000011920929,
     "k_roche": 1.229857325553894,
-    "kappa": 1.3376034498214722,
-    "lambda_bind": 0.002700827084481716,
-    "lambda_space": 0.03722073510289192,
-    "m_b": 3.757513999938965,
-    "m_n": 3.0191614627838135,
-    "m_q": 10.868185043334961,
-    "m_r": 5.471116065979004,
+    "kappa": 1.3299769163131714,
+    "lambda_bind": 0.003939704969525337,
+    "lambda_space": 0.051241904497146606,
+    "m_b": 3.803868293762207,
+    "m_n": 3.011596918106079,
+    "m_q": 10.976005554199219,
+    "m_r": 5.448538303375244,
     "rho": 1.3763911724090576,
-    "sigma": 0.4774293899536133
+    "sigma": 0.4676067531108856
   },
   "created": "2026-10-24",
   "generation": 2,
@@ -27,15 +27,15 @@
     "capped_target": "drop",
     "conserve_mass": false,
     "depth": 4,
-    "games": 4000,
+    "games": 6000,
     "games_per_round": 2000,
     "lambda": 0.699999988079071,
     "learn_temperature": true,
     "lr": 0.009999999776482582,
     "lr_units": "relative to bound range (hi - lo)",
     "optimizer": "adam",
-    "rounds": 2,
+    "rounds": 3,
     "shards_per_round": 20,
-    "temperature": 3.3967220783233643
+    "temperature": 3.2512433528900146
   }
 }
