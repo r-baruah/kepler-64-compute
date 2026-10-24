@@ -52,6 +52,15 @@ gh workflow run sprt.yml -R r-baruah/kepler-64-compute \
 This is 20 × 100 pairs = 4,000 games, in one batch. The result lands in `results/<name>.json`: `H1` = the candidate is
 stronger (accept it as the new generation), `H0` = it isn't, `inconclusive` = play more.
 
+## 3b. Stockfish ladder (strength against calibrated opponents)
+```bash
+gh workflow run ladder.yml -R r-baruah/kepler-64-compute -f name=gen002 \
+  -f gen=engine/data/generations/gen-002.json -f rungs=1320,1500,1700,1900,2100 -f openings=100 -f shards=10 -f tc=30+0.3
+```
+- Each rung is 200 games (100 openings × both colours) against Stockfish 19 limited to that UCI_Elo, at 30 s + 0.3 s.
+- The result lands in `results/ladder-<name>.json`: score, Elo difference with a 95% interval, and an implied rating per rung.
+- These are clock games, so they are statistics, not bit-reproducible. Never use them for training.
+
 ## 4. Watch, stop, resume
 - **Watch:** the Actions tab, or `gh run list -R r-baruah/kepler-64-compute`. Each round's numbers are committed to
   `runs/<run>/round-NNN.json` as soon as the round finishes.
