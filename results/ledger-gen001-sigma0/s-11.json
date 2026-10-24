@@ -1,0 +1,54 @@
+{
+  "kind": "sprt-shard",
+  "version": 1,
+  "spec": "v1.0-spec-1",
+  "a_hash": "68cb3f7bd853594b",
+  "b_hash": "a7f4ca29fbf7f3df",
+  "seed": 4494315102638151600,
+  "pentanomial": [
+    9,
+    6,
+    33,
+    15,
+    37
+  ],
+  "wdl": {
+    "w": 121,
+    "d": 23,
+    "l": 56
+  },
+  "elapsed_ms": 167475,
+  "config": {
+    "a": {
+      "file": "engine/data/generations/gen-001.json",
+      "generation": 1
+    },
+    "adjudication": {
+      "draw_after": 80,
+      "draw_ku": 0.15000000596046448,
+      "draw_plies": 20,
+      "enabled": true,
+      "resign_ku": 8.0,
+      "resign_plies": 6
+    },
+    "b": {
+      "file": "engine/data/ablations/gen001-sigma0.json",
+      "generation": 1
+    },
+    "created": "2026-10-24T09:49:45Z",
+    "depth": 4,
+    "explore_plies": 6,
+    "hash_mb": 8,
+    "max_plies": 300,
+    "movetime_ms": null,
+    "note": "pentanomial = pairs scoring 0, 0.5, 1, 1.5, 2 for A",
+    "openings": "engine/data/openings/balanced-200.epd",
+    "openings_hash": "f572f886e751625c",
+    "pairs": 100,
+    "round_seed": 1001,
+    "shard_index": 11,
+    "threads": 4
+  },
+  "deterministic": true,
+  "result_hash": "0fe14e985eac1277"
+}
