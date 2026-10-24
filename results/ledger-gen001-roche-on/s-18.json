@@ -1,0 +1,54 @@
+{
+  "kind": "sprt-shard",
+  "version": 1,
+  "spec": "v1.0-spec-1",
+  "a_hash": "e890ac7098356019",
+  "b_hash": "68cb3f7bd853594b",
+  "seed": 16154833191966848374,
+  "pentanomial": [
+    29,
+    13,
+    47,
+    5,
+    6
+  ],
+  "wdl": {
+    "w": 63,
+    "d": 20,
+    "l": 117
+  },
+  "elapsed_ms": 349991,
+  "config": {
+    "a": {
+      "file": "engine/data/ablations/gen001-roche-on.json",
+      "generation": 1
+    },
+    "adjudication": {
+      "draw_after": 80,
+      "draw_ku": 0.15000000596046448,
+      "draw_plies": 20,
+      "enabled": true,
+      "resign_ku": 8.0,
+      "resign_plies": 6
+    },
+    "b": {
+      "file": "engine/data/generations/gen-001.json",
+      "generation": 1
+    },
+    "created": "2026-10-24T10:35:28Z",
+    "depth": 4,
+    "explore_plies": 6,
+    "hash_mb": 8,
+    "max_plies": 300,
+    "movetime_ms": null,
+    "note": "pentanomial = pairs scoring 0, 0.5, 1, 1.5, 2 for A",
+    "openings": "engine/data/openings/balanced-200.epd",
+    "openings_hash": "f572f886e751625c",
+    "pairs": 100,
+    "round_seed": 1001,
+    "shard_index": 18,
+    "threads": 4
+  },
+  "deterministic": true,
+  "result_hash": "00fe60868e0487f3"
+}
