@@ -15,6 +15,8 @@ on:
       lr: { description: "Adam learning rate (relative to bound range)", default: "0.01" }
       seed: { description: "base seed", default: "1" }
       gen: { description: "starting generation file", default: "engine/data/generations/gen-000.json" }
+      shard_args: { description: "extra tdleaf-shard flags (e.g. --temperature 6)", default: "" }
+      reduce_args: { description: "extra tdleaf-reduce flags (e.g. --no-learn-temperature)", default: "" }
 
 permissions:
   contents: write
@@ -94,7 +96,7 @@ jobs:
             --games ${{ needs.plan.outputs.per_shard }} \
             --seed $(( ${{ inputs.seed }} * 100000 + ${{ needs.plan.outputs.round }} )) \
             --shard-index ${{ matrix.k }} \
-            --depth ${{ inputs.depth }} --threads $(nproc) \
+            --depth ${{ inputs.depth }} --threads $(nproc) ${{ inputs.shard_args }} \
             --out shard-$(printf %02d ${{ matrix.k }}).json
       - uses: actions/upload-artifact@v4
         with: { name: "shard-${{ matrix.k }}", path: "shard-*.json", retention-days: 2 }
@@ -114,7 +116,7 @@ jobs:
           mkdir -p "$dir/shards/round-$(printf %03d ${{ needs.plan.outputs.round }})"
           cp shards/*.json "$dir/shards/round-$(printf %03d ${{ needs.plan.outputs.round }})/"
           bin/kepler-train tdleaf-reduce --state "${{ needs.plan.outputs.state }}" \
-            --gen "${{ needs.plan.outputs.gen }}" --shard-dir shards --lr ${{ inputs.lr }} --out-dir "$dir"
+            --gen "${{ needs.plan.outputs.gen }}" --shard-dir shards --lr ${{ inputs.lr }} ${{ inputs.reduce_args }} --out-dir "$dir"
           echo "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" > "$dir/round-$(printf %03d ${{ needs.plan.outputs.round }}).run-url"
       - name: commit
         run: |
@@ -133,4 +135,5 @@ jobs:
           gh workflow run tdleaf-round.yml --ref "${{ github.ref_name }}" \
             -f run="${{ inputs.run }}" -f rounds="${{ inputs.rounds }}" -f shards="${{ inputs.shards }}" \
             -f games="${{ inputs.games }}" -f depth="${{ inputs.depth }}" -f lr="${{ inputs.lr }}" \
-            -f seed="${{ inputs.seed }}" -f gen="${{ inputs.gen }}"
+            -f seed="${{ inputs.seed }}" -f gen="${{ inputs.gen }}" \
+            -f shard_args="${{ inputs.shard_args }}" -f reduce_args="${{ inputs.reduce_args }}"
